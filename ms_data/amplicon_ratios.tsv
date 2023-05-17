@@ -1,0 +1,70 @@
+2m	AMA1_short	CEN6/ARSH4	RK2	RSF1010	UARS1	p15A	pAL5000	pAMb1	pBBR1	pBBR1-UP	pBC1	pIJ101	pIP501	pNG2	pSC101ts	pSG5	pSa	pUB110	pWKS1	panARS	panARS-OPT	Sample	FileName	Strain_name	Method	Library	Replicate	Conjugation_frequency	Strain_library
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	A10_MBS	20230427-55-A10-MBS-SB	Bacillus licheniformis	Magmax_Barcode	147	2	0.00243	147Bacillus licheniformis
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	A10_PBS	20230427-91-A10-PBS-SB	Bacillus licheniformis	Plasmid_Barcode	147	2	0.00243	147Bacillus licheniformis
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	A11_MBS	20230427-56-A11-MBS-SB	Bacillus licheniformis	Magmax_Barcode	147	3	0.00114	147Bacillus licheniformis
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	A11_PBS	20230427-92-A11-PBS-SB	Bacillus licheniformis	Plasmid_Barcode	147	3	0.00114	147Bacillus licheniformis
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	A12_MBS	20230427-57-A12-MBS-SB	Exiguobacterium aurantiacum	Magmax_Barcode	147	1	2.5e-05	147Exiguobacterium aurantiacum
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	A12_PBS	20230427-93-A12-PBS-SB	Exiguobacterium aurantiacum	Plasmid_Barcode	147	1	2.5e-05	147Exiguobacterium aurantiacum
+0.0	0.0	0.0	3.4	3.2	0.0	4.3	0.0	0.0	2.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	3.5	0.0	0.0	0.0	0.0	A1_MBS	20230427-46-A1-MBS-SB	Shewanella oneidensis	Magmax_Barcode	150	1	0.117	150Shewanella oneidensis
+0.0	0.0	0.0	3.7	3.7	0.0	4.6	0.0	0.0	2.9	0.0	0.0	0.0	0.0	0.0	0.0	0.0	3.8	0.0	0.0	0.0	0.0	A1_PBS	20230427-82-A1-PBS-SB	Shewanella oneidensis	Plasmid_Barcode	150	1	0.117	150Shewanella oneidensis
+0.0	0.0	0.0	3.4	3.4	0.0	4.4	0.0	0.0	1.8	0.0	0.0	0.0	0.0	2.8	0.0	0.0	3.5	0.0	0.0	0.0	0.0	A2_MBS	20230427-47-A2-MBS-SB	Shewanella oneidensis	Magmax_Barcode	150	2	0.064	150Shewanella oneidensis
+0.0	0.0	0.0	3.5	3.6	0.0	4.6	0.0	0.0	1.9	0.0	0.0	0.0	0.0	3.0	0.0	0.0	3.6	0.0	0.0	0.0	0.0	A2_PBS	20230427-83-A2-PBS-SB	Shewanella oneidensis	Plasmid_Barcode	150	2	0.064	150Shewanella oneidensis
+0.0	0.0	0.0	3.3	3.3	0.0	4.2	0.0	0.0	1.9	0.0	0.0	0.0	0.0	3.1	0.0	0.0	3.4	0.0	0.0	0.0	0.0	A3_MBS	20230427-48-A3-MBS-SB	Shewanella oneidensis	Magmax_Barcode	150	3	0.125	150Shewanella oneidensis
+0.0	0.0	0.0	3.7	3.8	0.0	4.6	0.0	0.0	2.3	0.0	0.0	0.0	0.0	3.7	0.0	0.0	3.9	0.0	0.0	0.0	0.0	A3_PBS	20230427-84-A3-PBS-SB	Shewanella oneidensis	Plasmid_Barcode	150	3	0.125	150Shewanella oneidensis
+0.0	0.0	0.0	1.4	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	1.4	0.0	0.0	0.0	0.0	A4_MBS	20230427-49-A4-MBS-SB	Pseudomonas alcaliphila	Magmax_Barcode	150	1	3.3e-05	150Pseudomonas alcaliphila
+0.0	0.0	0.0	1.6	1.1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	1.6	0.0	0.0	0.0	0.0	A4_PBS	20230427-85-A4-PBS-SB	Pseudomonas alcaliphila	Plasmid_Barcode	150	1	3.3e-05	150Pseudomonas alcaliphila
+0.0	0.0	0.0	1.5	0.0	0.0	0.0	0.0	0.0	1.2	0.0	0.0	0.0	0.0	0.0	0.0	0.0	1.2	0.0	0.0	0.0	0.0	A5_MBS	20230427-50-A5-MBS-SB	Pseudomonas alcaliphila	Magmax_Barcode	150	2	4.5e-05	150Pseudomonas alcaliphila
+0.0	0.0	0.0	1.7	0.0	0.0	0.0	0.0	0.0	1.3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	1.4	0.0	0.0	0.0	0.0	A5_PBS	20230427-86-A5-PBS-SB	Pseudomonas alcaliphila	Plasmid_Barcode	150	2	4.5e-05	150Pseudomonas alcaliphila
+0.0	0.0	0.0	1.7	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	1.1	0.0	0.0	0.0	0.0	A6_MBS	20230427-51-A6-MBS-SB	Pseudomonas alcaliphila	Magmax_Barcode	150	3	3.5e-05	150Pseudomonas alcaliphila
+0.0	0.0	0.0	2.0	0.0	0.0	0.0	0.0	0.0	1.2	0.0	0.0	0.0	0.0	0.0	0.0	0.0	1.5	0.0	0.0	0.0	0.0	A6_PBS	20230427-87-A6-PBS-SB	Pseudomonas alcaliphila	Plasmid_Barcode	150	3	3.5e-05	150Pseudomonas alcaliphila
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	A9_MBS	20230427-54-A9-MBS-SB	Bacillus licheniformis	Magmax_Barcode	147	1	0.001533	147Bacillus licheniformis
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	A9_PBS	20230427-90-A9-PBS-SB	Bacillus licheniformis	Plasmid_Barcode	147	1	0.001533	147Bacillus licheniformis
+0.0	0.0	0.0	2.1	4.3	0.0	2.1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	2.1	0.0	0.0	0.0	0.0	B10_MBS	20230427-67-B10-MBS-SB	Shewanella putrefaciens	Magmax_Barcode	150	3	0.02	150Shewanella putrefaciens
+0.0	0.0	0.0	2.7	4.9	0.0	2.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	2.6	0.0	0.0	0.0	0.0	B10_PBS	20230427-103-B10-PBS-SB	Shewanella putrefaciens	Plasmid_Barcode	150	3	0.02	150Shewanella putrefaciens
+0.0	0.0	0.0	0.0	0.0	0.0	1.1	0.0	0.0	2.2	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	B11_MBS	20230427-68-B11-MBS-SB	Duganella zoogloeoides	Magmax_Barcode	147	1	0.13	147Duganella zoogloeoides
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	1.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	B11_PBS	20230427-104-B11-PBS-SB	Duganella zoogloeoides	Plasmid_Barcode	147	1	0.13	147Duganella zoogloeoides
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	1.7	1.2	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	B12_MBS	20230427-69-B12-MBS-SB	Duganella zoogloeoides	Magmax_Barcode	147	2	0.09	147Duganella zoogloeoides
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	1.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	B12_PBS	20230427-105-B12-PBS-SB	Duganella zoogloeoides	Plasmid_Barcode	147	2	0.09	147Duganella zoogloeoides
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	B1_MBS	20230427-58-B1-MBS-SB	Exiguobacterium aurantiacum	Magmax_Barcode	147	2	2e-05	147Exiguobacterium aurantiacum
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	B1_PBS	20230427-94-B1-PBS-SB	Exiguobacterium aurantiacum	Plasmid_Barcode	147	2	2e-05	147Exiguobacterium aurantiacum
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	B2_MBS	20230427-59-B2-MBS-SB	Exiguobacterium aurantiacum	Magmax_Barcode	147	3	1.4e-05	147Exiguobacterium aurantiacum
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	B2_PBS	20230427-95-B2-PBS-SB	Exiguobacterium aurantiacum	Plasmid_Barcode	147	3	1.4e-05	147Exiguobacterium aurantiacum
+0.0	0.0	0.0	2.6	4.5	0.0	2.8	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	B5_MBS	20230427-62-B5-MBS-SB	Shewanella putrefaciens	Magmax_Barcode	147	1	0.1	147Shewanella putrefaciens
+0.0	0.0	0.0	2.2	4.5	0.0	2.4	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	B5_PBS	20230427-98-B5-PBS-SB	Shewanella putrefaciens	Plasmid_Barcode	147	1	0.1	147Shewanella putrefaciens
+0.0	0.0	0.0	2.1	4.6	0.0	2.5	0.0	0.0	2.1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	B6_MBS	20230427-63-B6-MBS-SB	Shewanella putrefaciens	Magmax_Barcode	147	2	0.1	147Shewanella putrefaciens
+0.0	0.0	0.0	1.7	4.2	0.0	1.7	0.0	0.0	1.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	B6_PBS	20230427-99-B6-PBS-SB	Shewanella putrefaciens	Plasmid_Barcode	147	2	0.1	147Shewanella putrefaciens
+0.0	0.0	0.0	0.0	4.5	0.0	2.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	1.4	0.0	0.0	0.0	0.0	0.0	0.0	0.0	B7_MBS	20230427-64-B7-MBS-SB	Shewanella putrefaciens	Magmax_Barcode	147	3	0.1	147Shewanella putrefaciens
+0.0	0.0	0.0	0.0	4.3	0.0	1.7	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	B7_PBS	20230427-100-B7-PBS-SB	Shewanella putrefaciens	Plasmid_Barcode	147	3	0.1	147Shewanella putrefaciens
+0.0	0.0	0.0	1.8	4.0	0.0	2.1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	2.5	0.0	0.0	0.0	0.0	B8_MBS	20230427-65-B8-MBS-SB	Shewanella putrefaciens	Magmax_Barcode	150	1	0.06	150Shewanella putrefaciens
+0.0	0.0	0.0	2.7	5.0	0.0	2.7	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	3.3	0.0	0.0	0.0	0.0	B8_PBS	20230427-101-B8-PBS-SB	Shewanella putrefaciens	Plasmid_Barcode	150	1	0.06	150Shewanella putrefaciens
+0.0	0.0	0.0	0.0	4.4	0.0	1.9	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	2.7	0.0	0.0	0.0	0.0	B9_MBS	20230427-66-B9-MBS-SB	Shewanella putrefaciens	Magmax_Barcode	150	2	0.08	150Shewanella putrefaciens
+0.0	0.0	0.0	0.0	4.5	0.0	1.6	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	2.6	0.0	0.0	0.0	0.0	B9_PBS	20230427-102-B9-PBS-SB	Shewanella putrefaciens	Plasmid_Barcode	150	2	0.08	150Shewanella putrefaciens
+0.0	0.0	0.0	3.0	2.7	0.0	4.0	0.0	0.0	3.3	0.0	0.0	0.0	0.0	2.9	2.7	0.0	2.9	0.0	0.0	0.0	0.0	C10_MBS	20230427-79-C10-MBS-SB	E. coli DH10B	Magmax_Barcode	150	3	0.075	150E. coli DH10B
+0.0	0.0	0.0	3.7	3.8	0.0	4.7	0.0	0.0	3.9	0.0	0.0	0.0	0.0	3.5	3.3	0.0	3.6	0.0	0.0	0.0	0.0	C10_PBS	20230427-115-C10-PBS-SB	E. coli DH10B	Plasmid_Barcode	150	3	0.075	150E. coli DH10B
+0.0	0.0	0.0	0.0	0.0	0.0	1.7	0.0	0.0	1.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	C1_MBS	20230427-70-C1-MBS-SB	Duganella zoogloeoides	Magmax_Barcode	147	3	0.11	147Duganella zoogloeoides
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	1.6	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	C1_PBS	20230427-106-C1-PBS-SB	Duganella zoogloeoides	Plasmid_Barcode	147	3	0.11	147Duganella zoogloeoides
+0.0	0.0	0.0	1.4	0.0	0.0	0.0	0.0	0.0	2.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	C2_MBS	20230427-71-C2-MBS-SB	Duganella zoogloeoides	Magmax_Barcode	150	1	0.02	150Duganella zoogloeoides
+0.0	0.0	0.0	1.5	0.0	0.0	0.0	0.0	0.0	2.6	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	C2_PBS	20230427-107-C2-PBS-SB	Duganella zoogloeoides	Plasmid_Barcode	150	1	0.02	150Duganella zoogloeoides
+0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	2.1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	C3_MBS	20230427-72-C3-MBS-SB	Duganella zoogloeoides	Magmax_Barcode	150	2	0.02	150Duganella zoogloeoides
+0.0	0.0	0.0	1.1	0.0	0.0	0.0	0.0	0.0	2.3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	C3_PBS	20230427-108-C3-PBS-SB	Duganella zoogloeoides	Plasmid_Barcode	150	2	0.02	150Duganella zoogloeoides
+0.0	0.0	0.0	1.3	0.0	0.0	0.0	0.0	0.0	2.2	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	C4_MBS	20230427-73-C4-MBS-SB	Duganella zoogloeoides	Magmax_Barcode	150	3	0.02	150Duganella zoogloeoides
+0.0	0.0	0.0	1.3	0.0	0.0	0.0	0.0	0.0	2.3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	C4_PBS	20230427-109-C4-PBS-SB	Duganella zoogloeoides	Plasmid_Barcode	150	3	0.02	150Duganella zoogloeoides
+0.0	0.0	0.0	2.2	2.2	0.0	3.4	0.0	0.0	2.8	2.3	0.0	0.0	0.0	4.1	2.4	0.0	2.0	0.0	0.0	0.0	0.0	C5_MBS	20230427-74-C5-MBS-SB	E. coli DH10B	Magmax_Barcode	147	1	0.333	147E. coli DH10B
+0.0	0.0	0.0	2.8	3.1	0.0	3.9	0.0	0.0	3.3	2.7	0.0	0.0	0.0	4.8	2.8	0.0	2.6	0.0	0.0	0.0	0.0	C5_PBS	20230427-110-C5-PBS-SB	E. coli DH10B	Plasmid_Barcode	147	1	0.333	147E. coli DH10B
+0.0	0.0	0.0	2.7	2.6	0.0	4.0	0.0	0.0	3.4	2.7	0.0	0.0	0.0	4.7	3.0	0.0	2.6	0.0	0.0	0.0	0.0	C6_MBS	20230427-75-C6-MBS-SB	E. coli DH10B	Magmax_Barcode	147	2	0.167	147E. coli DH10B
+0.0	0.0	0.0	3.1	3.4	0.0	4.2	0.0	0.0	3.7	3.1	0.0	0.0	0.0	5.2	3.2	0.0	2.9	0.0	0.0	0.0	0.0	C6_PBS	20230427-111-C6-PBS-SB	E. coli DH10B	Plasmid_Barcode	147	2	0.167	147E. coli DH10B
+0.0	0.0	0.0	2.8	2.7	0.0	4.0	0.0	0.0	3.4	2.9	0.0	0.0	0.0	4.7	2.9	0.0	2.6	0.0	0.0	0.0	0.0	C7_MBS	20230427-76-C7-MBS-SB	E. coli DH10B	Magmax_Barcode	147	3	0.125	147E. coli DH10B
+0.0	0.0	0.0	3.0	3.2	0.0	4.1	0.0	0.0	3.5	3.0	0.0	0.0	0.0	5.0	3.0	0.0	2.7	0.0	0.0	0.0	0.0	C7_PBS	20230427-112-C7-PBS-SB	E. coli DH10B	Plasmid_Barcode	147	3	0.125	147E. coli DH10B
+0.0	0.0	0.0	2.9	2.7	0.0	3.9	0.0	0.0	3.2	0.0	0.0	0.0	0.0	2.8	2.6	0.0	2.8	0.0	0.0	0.0	0.0	C8_MBS	20230427-77-C8-MBS-SB	E. coli DH10B	Magmax_Barcode	150	1	0.0125	150E. coli DH10B
+0.0	0.0	0.0	3.4	3.4	0.0	4.4	0.0	0.0	3.6	0.0	0.0	0.0	0.0	3.1	2.9	0.0	3.3	0.0	0.0	0.0	0.0	C8_PBS	20230427-113-C8-PBS-SB	E. coli DH10B	Plasmid_Barcode	150	1	0.0125	150E. coli DH10B
+0.0	0.0	0.0	3.0	2.7	0.0	4.0	0.0	0.0	3.2	0.0	0.0	0.0	0.0	3.1	2.7	0.0	2.8	0.0	0.0	0.0	0.0	C9_MBS	20230427-78-C9-MBS-SB	E. coli DH10B	Magmax_Barcode	150	2	0.0364	150E. coli DH10B
+0.0	0.0	0.0	3.6	3.5	0.0	4.6	0.0	0.0	3.8	0.0	0.0	0.0	0.0	3.5	3.1	0.0	3.4	0.0	0.0	0.0	0.0	C9_PBS	20230427-114-C9-PBS-SB	E. coli DH10B	Plasmid_Barcode	150	2	0.0364	150E. coli DH10B
+0.0	0.0	0.0	0.0	4.6	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	Hal_gDNA_150_1	20230501-13-Hnep-gDNA-150-1-SB	Halomonas alkaliphila	Magmax_Barcode	150	1	0.013725	150Halomonas alkaliphila
+0.0	0.0	0.0	0.0	4.8	0.0	0.0	0.0	0.0	1.1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	Hal_gDNA_150_2	20230501-14-Hnep-gDNA-150-2-SB	Halomonas alkaliphila	Magmax_Barcode	150	2	0.070833	150Halomonas alkaliphila
+0.0	0.0	0.0	0.0	4.2	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	Hal_gDNA_150_3	20230501-15-Hnep-gDNA-150-3-SB	Halomonas alkaliphila	Magmax_Barcode	150	3	0.028125	150Halomonas alkaliphila
+0.0	0.0	0.0	0.0	4.7	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	Hnep_gDNA_150_1	20230501-10-Hal-gDNA-150-1-SB	Halomonas neptunia	Magmax_Barcode	150	1	0.071429	150Halomonas neptunia
+0.0	0.0	0.0	0.0	4.7	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	Hnep_gDNA_150_2	20230501-11-Hal-gDNA-150-2-SB	Halomonas neptunia	Magmax_Barcode	150	2	0.15	150Halomonas neptunia
+0.0	0.0	0.0	0.0	4.6	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	Hnep_gDNA_150_3	20230501-12-Hal-gDNA-150-3-SB	Halomonas neptunia	Magmax_Barcode	150	3	0.05	150Halomonas neptunia
+0.0	0.0	0.0	0.0	3.9	0.0	1.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	2.7	0.0	0.0	3.2	0.0	0.0	0.0	0.0	Sele_gDNA_150_1	20230501-16-Sele-gDNA-150-1-SB	Shewanella electrodiphila	Magmax_Barcode	150	1	0.15	150Shewanella electrodiphila
+0.0	0.0	0.0	0.0	3.7	0.0	1.3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	2.8	0.0	0.0	3.3	0.0	1.2	0.0	0.0	Sele_gDNA_150_2	20230501-17-Sele-gDNA-150-2-SB	Shewanella electrodiphila	Magmax_Barcode	150	2	0.07	150Shewanella electrodiphila
+0.0	0.0	0.0	0.0	3.8	0.0	1.1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	2.7	0.0	0.0	3.3	0.0	0.0	0.0	0.0	Sele_gDNA_150_3	20230501-18-Sele-gDNA-150-3-SB	Shewanella electrodiphila	Magmax_Barcode	150	3	0.15	150Shewanella electrodiphila
