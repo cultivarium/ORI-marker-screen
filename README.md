@@ -1,13 +1,14 @@
 # ORI-marker-screen
+
 Analyses and data for identifying and quantifying abundances of origins of replication in a pooled ORI-marker screen
 
-### Overview
+## Overview
 
-This repository contains code and data for reproducing the analyses described in "A scalable framework for high-throughput identification of functional plasmid Origins of Replication in non-model bacteria.". It also contains scripts and examples for how to identify and quantify the origins of replications present in a pool of plasmids, either after or before a selective screen. 
+This repository contains code and data for reproducing the analyses described in "A scalable framework for high-throughput identification of functional plasmid Origins of Replication in non-model bacteria." It also contains scripts and examples for how to identify and quantify the origins of replications present in a pool of plasmids, either after or before a selective screen. 
 
-Conducting a plasmid pool screen and having issues with these scripts for your analysis? Open an issue and we will respond to help ASAP!
+Conducting a plasmid pool screen and having issues with these scripts? Open an issue and we will respond to help ASAP!
 
-### Requirements
+## Requirements
 
 1. Python library requirements are listed in `requirements.txt`.
 2. BBDuk (both amplicon and whole plasmid sequencing)
@@ -15,8 +16,7 @@ Conducting a plasmid pool screen and having issues with these scripts for your a
 4. BBmerge (amplicon sequencing)
 5. VSEARCH (amplicon sequencing)
 
-
-### Data
+## Data
 
 Data files specific for the Cultivarium Possum Toolkit library of ORIs are available as follows:
 
@@ -24,9 +24,9 @@ Data files specific for the Cultivarium Possum Toolkit library of ORIs are avail
 - `barcodes.csv` - A list of the Barcodes associated with each ORI in the library.
 - `origins.tsv` - Start and stop locations of each ORI region on each plasmid in the library.
 - `./pool_data/*` - FASTA and Genbank files describing the plasmids (and their respective ORIs) within the Cultivarium Possum Toolkit. 
-- Raw sequencing data: Raw sequencing data for our preprint can be obtained through AWS S3: `aws s3 cp --recursive s3://cultivarium-sequencing/ORI-MARKER-RAW-DATA-MAY2023/ .`
+- Raw sequencing data for our preprint can be obtained through AWS S3: `aws s3 cp --recursive s3://cultivarium-sequencing/ORI-MARKER-RAW-DATA-MAY2023/ .`
 
-### Amplicon sequencing for barcoded ORI quantification
+## Amplicon sequencing for barcoded ORI quantification
 
 For identifying the presence of amplicon barcodes from the Cultivarium Possum Toolkit. Each barcode is linked to an ORI within the library, and therefore the barcodes are used to identify the presence and abundances of each ORI within the pool. 
 
@@ -56,7 +56,7 @@ Example outputs:
 `./ms_data/barcode_results.tsv` - The read pair / amplicon counts for each ORI within each sample.
 
 
-### Whole plasmid sequencing ORI quantification
+## Whole plasmid sequencing ORI quantification
 
 For identifying the presence of ORIs within a pool with whole plasmid (or whole genome) sequencing, use the script `whole_plasmid_quantification.py`. The inputs for this script are the directory of gzipped FASTQ files (a forward and reverse read file per sample) and a mapping file linking samples to their respective pools.
 
