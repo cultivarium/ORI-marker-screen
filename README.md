@@ -5,6 +5,8 @@ Analyses and data for identifying and quantifying abundances of origins of repli
 
 This repository contains code and data for reproducing the analyses described in "A scalable framework for high-throughput identification of functional plasmid Origins of Replication in non-model bacteria.". It also contains scripts and examples for how to identify and quantify the origins of replications present in a pool of plasmids, either after or before a selective screen. 
 
+Conducting a plasmid pool screen and having issues with these scripts for your analysis? Open an issue and we will respond to help ASAP!
+
 ### Requirements
 
 1. Python library requirements are listed in `requirements.txt`.
