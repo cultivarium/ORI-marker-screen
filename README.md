@@ -11,10 +11,18 @@ Conducting a plasmid pool screen and having issues with these scripts? Open an i
 ## Requirements
 
 1. Python library requirements are listed in `requirements.txt`.
-2. BBDuk (both amplicon and whole plasmid sequencing)
+2. [BBDuk](https://jgi.doe.gov/data-and-tools/software-tools/bbtools/) (both amplicon and whole plasmid sequencing)
 3. Bowtie2 (whole plasmid sequencing)
-4. BBmerge (amplicon sequencing)
-5. VSEARCH (amplicon sequencing)
+4. [BBmerge](https://jgi.doe.gov/data-and-tools/software-tools/bbtools/) (amplicon sequencing)
+5. [VSEARCH](https://github.com/torognes/vsearch) (amplicon sequencing)
+
+## Install and quick start
+
+```
+git clone https://github.com/cultivarium/ORI-marker-screen.git
+pip install -r requirements.txt
+python barcode_quantification.py -d ms_data/amplicon_fastq/ -m ./ms_data/barcode_mapping_test.csv
+```
 
 ## Data
 
