@@ -13,35 +13,6 @@ This repository contains code and data for reproducing the analyses described in
 4. BBmerge (amplicon sequencing)
 5. VSEARCH (amplicon sequencing)
 
-### Whole plasmid sequencing ORI quantification
-
-For identifying the presence of ORIs within a pool with whole plasmid (or whole genome) sequencing, use the script `whole_plasmid_quantification.py`. The inputs for this script are the directory of gzipped FASTQ files (a forward and reverse read file per sample) and a mapping file linking samples to their respective pools.
-
-Example usage: `python whole_plasmid_quantification.py -d ./ms_data/fastq/ -m ./ms_data/mapping.csv`.
-
-All arguments:
-
-```
-usage: whole_plasmid_quantification.py [-h] -d FASTQ_DIRECTORY -m MAPPING_FILE [-b BBMAP_FOLDER]
-
-Whole plasmid sequencing of a plasmid ORI pool.
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -d FASTQ_DIRECTORY, --fastq_directory FASTQ_DIRECTORY
-                        Directory of FASTQ files. File names must take the form: sample_*_R1_*.fastq.gz
-  -m MAPPING_FILE, --mapping_file MAPPING_FILE
-                        Mapping file of comma separated columns Sample,Pool.
-  -b BBMAP_FOLDER, --bbmap_folder BBMAP_FOLDER
-                        Directory containing BBTools on your system
-```
-
-Example outputs:
-
-`./ms_data/plasmid_library_breadth.tsv` - Provides breadth of coverage for each ORI region in each sample. Recommend a breadth cutoff of at least 50% to call an ORI as present in a given sample.
-
-`./ms_data/plasmid_library_coverage.tsv` - The mean coverage of each ORI region in each sample.
-
 ### Amplicon barcoded ORI quantification
 
 For identifying the presence of amplicon barcodes from the Cultivarium Possum Toolkit. Each barcode is linked to an ORI within the library, and therefore the barcodes are used to identify the presence and abundances of each ORI within the pool. 
@@ -70,6 +41,36 @@ Example outputs:
 `./ms_data/barcode_stats.tsv` - Provides statistics on read filtering, merging, and matching for each sample. Have a look at this file to understand general quality of your run and identify any potential issues.
 
 `./ms_data/barcode_results.tsv` - The read pair / amplicon counts for each ORI within each sample.
+
+
+### Whole plasmid sequencing ORI quantification
+
+For identifying the presence of ORIs within a pool with whole plasmid (or whole genome) sequencing, use the script `whole_plasmid_quantification.py`. The inputs for this script are the directory of gzipped FASTQ files (a forward and reverse read file per sample) and a mapping file linking samples to their respective pools.
+
+Example usage: `python whole_plasmid_quantification.py -d ./ms_data/fastq/ -m ./ms_data/mapping.csv`.
+
+All arguments:
+
+```
+usage: whole_plasmid_quantification.py [-h] -d FASTQ_DIRECTORY -m MAPPING_FILE [-b BBMAP_FOLDER]
+
+Whole plasmid sequencing of a plasmid ORI pool.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d FASTQ_DIRECTORY, --fastq_directory FASTQ_DIRECTORY
+                        Directory of FASTQ files. File names must take the form: sample_*_R1_*.fastq.gz
+  -m MAPPING_FILE, --mapping_file MAPPING_FILE
+                        Mapping file of comma separated columns Sample,Pool.
+  -b BBMAP_FOLDER, --bbmap_folder BBMAP_FOLDER
+                        Directory containing BBTools on your system
+```
+
+Example outputs:
+
+`./ms_data/plasmid_library_breadth.tsv` - Provides breadth of coverage for each ORI region in each sample. Recommend a breadth cutoff of at least 50% to call an ORI as present in a given sample.
+
+`./ms_data/plasmid_library_coverage.tsv` - The mean coverage of each ORI region in each sample.
 
 ### Data
 
