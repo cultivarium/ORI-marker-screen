@@ -15,6 +15,17 @@ Conducting a plasmid pool screen and having issues with these scripts for your a
 4. BBmerge (amplicon sequencing)
 5. VSEARCH (amplicon sequencing)
 
+
+### Data
+
+Data files specific for the Cultivarium Possum Toolkit library of ORIs are available as follows:
+
+- `barcode_references.fasta` - Barcode sequences associated with each ORI in the library in FASTA format.
+- `barcodes.csv` - A list of the Barcodes associated with each ORI in the library.
+- `origins.tsv` - Start and stop locations of each ORI region on each plasmid in the library.
+- `./pool_data/*` - FASTA and Genbank files describing the plasmids (and their respective ORIs) within the Cultivarium Possum Toolkit. 
+- Raw sequencing data: Raw sequencing data for our preprint can be obtained through AWS S3: `aws s3 cp --recursive s3://cultivarium-sequencing/ORI-MARKER-RAW-DATA-MAY2023/ .`
+
 ### Amplicon sequencing for barcoded ORI quantification
 
 For identifying the presence of amplicon barcodes from the Cultivarium Possum Toolkit. Each barcode is linked to an ORI within the library, and therefore the barcodes are used to identify the presence and abundances of each ORI within the pool. 
@@ -73,12 +84,3 @@ Example outputs:
 `./ms_data/plasmid_library_breadth.tsv` - Provides breadth of coverage for each ORI region in each sample. Recommend a breadth cutoff of at least 50% to call an ORI as present in a given sample.
 
 `./ms_data/plasmid_library_coverage.tsv` - The mean coverage of each ORI region in each sample.
-
-### Data
-
-Data files specific for the Cultivarium Possum Toolkit library of ORIs are available as follows:
-
-- `barcode_references.fasta` - Barcode sequences associated with each ORI in the library in FASTA format.
-- `barcodes.csv` - A list of the Barcodes associated with each ORI in the library.
-- `origins.tsv` - Start and stop locations of each ORI region on each plasmid in the library.
-- `./pool_data/*` - FASTA and Genbank files describing the plasmids (and their respective ORIs) within the Cultivarium Possum Toolkit. 
