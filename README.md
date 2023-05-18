@@ -12,7 +12,7 @@ Conducting a plasmid pool screen and having issues with these scripts? Open an i
 
 1. Python library requirements are listed in `requirements.txt`.
 2. [BBDuk](https://jgi.doe.gov/data-and-tools/software-tools/bbtools/) (both amplicon and whole plasmid sequencing)
-3. Bowtie2 (whole plasmid sequencing)
+3. [Bowtie2](https://github.com/BenLangmead/bowtie2) (whole plasmid sequencing)
 4. [BBmerge](https://jgi.doe.gov/data-and-tools/software-tools/bbtools/) (amplicon sequencing)
 5. [VSEARCH](https://github.com/torognes/vsearch) (amplicon sequencing)
 
