@@ -13,7 +13,7 @@ This repository contains code and data for reproducing the analyses described in
 4. BBmerge (amplicon sequencing)
 5. VSEARCH (amplicon sequencing)
 
-### Amplicon barcoded ORI quantification
+### Amplicon sequencing for barcoded ORI quantification
 
 For identifying the presence of amplicon barcodes from the Cultivarium Possum Toolkit. Each barcode is linked to an ORI within the library, and therefore the barcodes are used to identify the presence and abundances of each ORI within the pool. 
 
