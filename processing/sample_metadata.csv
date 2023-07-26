@@ -1,0 +1,136 @@
+Sample,FileName,Strain_name,Method,Library,Replicate,Conjugation_frequency
+A1_MBS,20230427-46-A1-MBS-SB,Shewanella oneidensis,Magmax_Barcode,150,1,0.117
+A1_PBS,20230427-82-A1-PBS-SB,Shewanella oneidensis,Plasmid_Barcode,150,1,0.117
+A1_WGS,20230427-37-A1-WGS-SB,Shewanella putrefaciens,Whole_Genome,150,1,NA
+A1_WPS,20230427-01-A1-WPS-SB,Shewanella oneidensis,Whole_Plasmid,150,1,0.117
+A10_MBS,20230427-55-A10-MBS-SB,Bacillus licheniformis,Magmax_Barcode,147,2,0.00243
+A10_PBS,20230427-91-A10-PBS-SB,Bacillus licheniformis,Plasmid_Barcode,147,2,0.00243
+A10_WPS,20230427-10-A10-WPS-SB,Bacillus licheniformis,Whole_Plasmid,147,2,0.00243
+A11_MBS,20230427-56-A11-MBS-SB,Bacillus licheniformis,Magmax_Barcode,147,3,0.00114
+A11_PBS,20230427-92-A11-PBS-SB,Bacillus licheniformis,Plasmid_Barcode,147,3,0.00114
+A11_WPS,20230427-11-A11-WPS-SB,Bacillus licheniformis,Whole_Plasmid,147,3,0.00114
+A12_MBS,20230427-57-A12-MBS-SB,Exiguobacterium aurantiacum,Magmax_Barcode,147,1,0.000025
+A12_PBS,20230427-93-A12-PBS-SB,Exiguobacterium aurantiacum,Plasmid_Barcode,147,1,0.000025
+A12_WGS,20230427-42-A12-WGS-SB,Exiguobacterium aurantiacum,Whole_Genome,147,1,NA
+A12_WPS,20230427-12-A12-WPS-SB,Exiguobacterium aurantiacum,Whole_Plasmid,147,1,0.000025
+A2_MBS,20230427-47-A2-MBS-SB,Shewanella oneidensis,Magmax_Barcode,150,2,0.064
+A2_PBS,20230427-83-A2-PBS-SB,Shewanella oneidensis,Plasmid_Barcode,150,2,0.064
+A2_WPS,20230427-02-A2-WPS-SB,Shewanella oneidensis,Whole_Plasmid,150,2,0.064
+A3_MBS,20230427-48-A3-MBS-SB,Shewanella oneidensis,Magmax_Barcode,150,3,0.125
+A3_PBS,20230427-84-A3-PBS-SB,Shewanella oneidensis,Plasmid_Barcode,150,3,0.125
+A3_WPS,20230427-03-A3-WPS-SB,Shewanella oneidensis,Whole_Plasmid,150,3,0.125
+A4_MBS,20230427-49-A4-MBS-SB,Pseudomonas alcaliphila,Magmax_Barcode,150,1,0.000033
+A4_PBS,20230427-85-A4-PBS-SB,Pseudomonas alcaliphila,Plasmid_Barcode,150,1,0.000033
+A4_WGS,20230427-38-A4-WGS-SB,Pseudomonas alcaliphila,Whole_Genome,150,1,NA
+A4_WPS,20230427-04-A4-WPS-SB,Pseudomonas alcaliphila,Whole_Plasmid,150,1,0.000033
+A5_MBS,20230427-50-A5-MBS-SB,Pseudomonas alcaliphila,Magmax_Barcode,150,2,0.000045
+A5_PBS,20230427-86-A5-PBS-SB,Pseudomonas alcaliphila,Plasmid_Barcode,150,2,0.000045
+A5_WPS,20230427-05-A5-WPS-SB,Pseudomonas alcaliphila,Whole_Plasmid,150,2,0.000045
+A6_MBS,20230427-51-A6-MBS-SB,Pseudomonas alcaliphila,Magmax_Barcode,150,3,0.000035
+A6_PBS,20230427-87-A6-PBS-SB,Pseudomonas alcaliphila,Plasmid_Barcode,150,3,0.000035
+A6_WPS,20230427-06-A6-WPS-SB,Pseudomonas alcaliphila,Whole_Plasmid,150,3,0.000035
+A7_MBS,20230427-52-A7-MBS-SB,10x negative control,Magmax_Barcode,150,1,0
+A7_PBS,20230427-88-A7-PBS-SB,10x negative control,Plasmid_Barcode,150,1,0
+A7_WGS,20230427-39-A7-WGS-SB,10x negative control,Whole_Genome,150,1,NA
+A7_WPS,20230427-07-A7-WPS-SB,10x negative control,Whole_Plasmid,150,1,0
+A8_MBS,20230427-53-A8-MBS-SB,100x negative control,Magmax_Barcode,150,1,0
+A8_PBS,20230427-89-A8-PBS-SB,100x negative control,Plasmid_Barcode,150,1,0
+A8_WGS,20230427-40-A8-WGS-SB,100x negative control,Whole_Genome,150,1,NA
+A8_WPS,20230427-08-A8-WPS-SB,100x negative control,Whole_Plasmid,150,1,0
+A9_MBS,20230427-54-A9-MBS-SB,Bacillus licheniformis,Magmax_Barcode,147,1,0.001533
+A9_PBS,20230427-90-A9-PBS-SB,Bacillus licheniformis,Plasmid_Barcode,147,1,0.001533
+A9_WGS,20230427-41-A9-WGS-SB,Bacillus licheniformis,Whole_Genome,147,1,NA
+A9_WPS,20230427-09-A9-WPS-SB,Bacillus licheniformis,Whole_Plasmid,147,1,0.001533
+B1_MBS,20230427-58-B1-MBS-SB,Exiguobacterium aurantiacum,Magmax_Barcode,147,2,0.00002
+B1_PBS,20230427-94-B1-PBS-SB,Exiguobacterium aurantiacum,Plasmid_Barcode,147,2,0.00002
+B1_WPS,20230427-13-B1-WPS-SB,Exiguobacterium aurantiacum,Whole_Plasmid,147,2,0.00002
+B10_MBS,20230427-67-B10-MBS-SB,Shewanella putrefaciens,Magmax_Barcode,150,3,0.02
+B10_PBS,20230427-103-B10-PBS-SB,Shewanella putrefaciens,Plasmid_Barcode,150,3,0.02
+B10_WPS,20230427-22-B10-WPS-SB,Shewanella putrefaciens,Whole_Plasmid,150,3,0.02
+B11_MBS,20230427-68-B11-MBS-SB,Duganella zoogloeoides,Magmax_Barcode,147,1,0.13
+B11_PBS,20230427-104-B11-PBS-SB,Duganella zoogloeoides,Plasmid_Barcode,147,1,0.13
+B11_WGS,20230427-44-B11-WGS-SB,Duganella zoogloeoides,Whole_Genome,147,1,NA
+B11_WPS,20230427-23-B11-WPS-SB,Duganella zoogloeoides,Whole_Plasmid,147,1,0.13
+B12_MBS,20230427-69-B12-MBS-SB,Duganella zoogloeoides,Magmax_Barcode,147,2,0.09
+B12_PBS,20230427-105-B12-PBS-SB,Duganella zoogloeoides,Plasmid_Barcode,147,2,0.09
+B12_WPS,20230427-24-B12-WPS-SB,Duganella zoogloeoides,Whole_Plasmid,147,2,0.09
+B2_MBS,20230427-59-B2-MBS-SB,Exiguobacterium aurantiacum,Magmax_Barcode,147,3,0.000014
+B2_PBS,20230427-95-B2-PBS-SB,Exiguobacterium aurantiacum,Plasmid_Barcode,147,3,0.000014
+B2_WPS,20230427-14-B2-WPS-SB,Exiguobacterium aurantiacum,Whole_Plasmid,147,3,0.000014
+B3_MBS,20230427-60-B3-MBS-SB,10x negative control,Magmax_Barcode,150,2,0
+B3_PBS,20230427-96-B3-PBS-SB,10x negative control,Plasmid_Barcode,150,2,0
+B3_WPS,20230427-15-B3-WPS-SB,10x negative control,Whole_Plasmid,150,2,0
+B4_MBS,20230427-61-B4-MBS-SB,100x negative control,Magmax_Barcode,150,2,0
+B4_PBS,20230427-97-B4-PBS-SB,100x negative control,Plasmid_Barcode,150,2,0
+B4_WPS,20230427-16-B4-WPS-SB,100x negative control,Whole_Plasmid,150,2,0
+B5_MBS,20230427-62-B5-MBS-SB,Shewanella putrefaciens,Magmax_Barcode,147,1,0.1
+B5_PBS,20230427-98-B5-PBS-SB,Shewanella putrefaciens,Plasmid_Barcode,147,1,0.1
+B5_WGS,20230427-43-B5-WGS-SB,Shewanella putrefaciens,Whole_Genome,147,1,NA
+B5_WPS,20230427-17-B5-WPS-SB,Shewanella putrefaciens,Whole_Plasmid,147,1,0.1
+B6_MBS,20230427-63-B6-MBS-SB,Shewanella putrefaciens,Magmax_Barcode,147,2,0.1
+B6_PBS,20230427-99-B6-PBS-SB,Shewanella putrefaciens,Plasmid_Barcode,147,2,0.1
+B6_WPS,20230427-18-B6-WPS-SB,Shewanella putrefaciens,Whole_Plasmid,147,2,0.1
+B7_MBS,20230427-64-B7-MBS-SB,Shewanella putrefaciens,Magmax_Barcode,147,3,0.1
+B7_PBS,20230427-100-B7-PBS-SB,Shewanella putrefaciens,Plasmid_Barcode,147,3,0.1
+B7_WPS,20230427-19-B7-WPS-SB,Shewanella putrefaciens,Whole_Plasmid,147,3,0.1
+B8_MBS,20230427-65-B8-MBS-SB,Shewanella putrefaciens,Magmax_Barcode,150,1,0.06
+B8_PBS,20230427-101-B8-PBS-SB,Shewanella putrefaciens,Plasmid_Barcode,150,1,0.06
+B8_WPS,20230427-20-B8-WPS-SB,Shewanella putrefaciens,Whole_Plasmid,150,1,0.06
+B9_MBS,20230427-66-B9-MBS-SB,Shewanella putrefaciens,Magmax_Barcode,150,2,0.08
+B9_PBS,20230427-102-B9-PBS-SB,Shewanella putrefaciens,Plasmid_Barcode,150,2,0.08
+B9_WPS,20230427-21-B9-WPS-SB,Shewanella putrefaciens,Whole_Plasmid,150,2,0.08
+C1_MBS,20230427-70-C1-MBS-SB,Duganella zoogloeoides,Magmax_Barcode,147,3,0.11
+C1_PBS,20230427-106-C1-PBS-SB,Duganella zoogloeoides,Plasmid_Barcode,147,3,0.11
+C1_WPS,20230427-25-C1-WPS-SB,Duganella zoogloeoides,Whole_Plasmid,147,3,0.11
+C10_MBS,20230427-79-C10-MBS-SB,E. coli DH10B,Magmax_Barcode,150,3,0.075
+C10_PBS,20230427-115-C10-PBS-SB,E. coli DH10B,Plasmid_Barcode,150,3,0.075
+C10_WPS,20230427-34-C10-WPS-SB,E. coli DH10B,Whole_Plasmid,150,3,0.075
+C11_MBS,20230427-80-C11-MBS-SB,10x negative control,Magmax_Barcode,150,3,0
+C11_PBS,20230427-116-C11-PBS-SB,10x negative control,Plasmid_Barcode,150,3,0
+C11_WPS,20230427-35-C11-WPS-SB,10x negative control,Whole_Plasmid,150,3,0
+C12_MBS,20230427-81-C12-MBS-SB,100x negative control,Magmax_Barcode,150,3,0
+C12_PBS,20230427-117-C12-PBS-SB,100x negative control,Plasmid_Barcode,150,3,0
+C12_WPS,20230427-36-C12-WPS-SB,100x negative control,Whole_Plasmid,150,3,0
+C2_MBS,20230427-71-C2-MBS-SB,Duganella zoogloeoides,Magmax_Barcode,150,1,0.02
+C2_PBS,20230427-107-C2-PBS-SB,Duganella zoogloeoides,Plasmid_Barcode,150,1,0.02
+C2_WPS,20230427-26-C2-WPS-SB,Duganella zoogloeoides,Whole_Plasmid,150,1,0.02
+C3_MBS,20230427-72-C3-MBS-SB,Duganella zoogloeoides,Magmax_Barcode,150,2,0.02
+C3_PBS,20230427-108-C3-PBS-SB,Duganella zoogloeoides,Plasmid_Barcode,150,2,0.02
+C3_WPS,20230427-27-C3-WPS-SB,Duganella zoogloeoides,Whole_Plasmid,150,2,0.02
+C4_MBS,20230427-73-C4-MBS-SB,Duganella zoogloeoides,Magmax_Barcode,150,3,0.02
+C4_PBS,20230427-109-C4-PBS-SB,Duganella zoogloeoides,Plasmid_Barcode,150,3,0.02
+C4_WPS,20230427-28-C4-WPS-SB,Duganella zoogloeoides,Whole_Plasmid,150,3,0.02
+C5_MBS,20230427-74-C5-MBS-SB,E. coli DH10B,Magmax_Barcode,147,1,0.333
+C5_PBS,20230427-110-C5-PBS-SB,E. coli DH10B,Plasmid_Barcode,147,1,0.333
+C5_WGS,20230427-45-C5-WGS-SB,E. coli DH10B,Whole_Genome,147,1,NA
+C5_WPS,20230427-29-C5-WPS-SB,E. coli DH10B,Whole_Plasmid,147,1,0.333
+C6_MBS,20230427-75-C6-MBS-SB,E. coli DH10B,Magmax_Barcode,147,2,0.167
+C6_PBS,20230427-111-C6-PBS-SB,E. coli DH10B,Plasmid_Barcode,147,2,0.167
+C6_WPS,20230427-30-C6-WPS-SB,E. coli DH10B,Whole_Plasmid,147,2,0.167
+C7_MBS,20230427-76-C7-MBS-SB,E. coli DH10B,Magmax_Barcode,147,3,0.125
+C7_PBS,20230427-112-C7-PBS-SB,E. coli DH10B,Plasmid_Barcode,147,3,0.125
+C7_WPS,20230427-31-C7-WPS-SB,E. coli DH10B,Whole_Plasmid,147,3,0.125
+C8_MBS,20230427-77-C8-MBS-SB,E. coli DH10B,Magmax_Barcode,150,1,0.0125
+C8_PBS,20230427-113-C8-PBS-SB,E. coli DH10B,Plasmid_Barcode,150,1,0.0125
+C8_WPS,20230427-32-C8-WPS-SB,E. coli DH10B,Whole_Plasmid,150,1,0.0125
+C9_MBS,20230427-78-C9-MBS-SB,E. coli DH10B,Magmax_Barcode,150,2,0.0364
+C9_PBS,20230427-114-C9-PBS-SB,E. coli DH10B,Plasmid_Barcode,150,2,0.0364
+C9_WPS,20230427-33-C9-WPS-SB,E. coli DH10B,Whole_Plasmid,150,2,0.0364
+Hal_plasmid_150_1,20230501-4-Hnep-plasmid-150-1-SB,Halomonas alkaliphila,Whole_Plasmid,150,1,0.013725
+Hal_plasmid_150_2,20230501-5-Hnep-plasmid-150-2-SB,Halomonas alkaliphila,Whole_Plasmid,150,2,0.070833
+Hal_plasmid_150_3,20230501-6-Hnep-plasmid-150-3-SB,Halomonas alkaliphila,Whole_Plasmid,150,3,0.028125
+Hal_gDNA_150_1,20230501-13-Hnep-gDNA-150-1-SB,Halomonas alkaliphila,Magmax_Barcode,150,1,0.013725
+Hal_gDNA_150_2,20230501-14-Hnep-gDNA-150-2-SB,Halomonas alkaliphila,Magmax_Barcode,150,2,0.070833
+Hal_gDNA_150_3,20230501-15-Hnep-gDNA-150-3-SB,Halomonas alkaliphila,Magmax_Barcode,150,3,0.028125
+Hnep_plasmid_150_1,20230501-1-Hal-plasmid-150-1-SB,Halomonas neptunia,Whole_Plasmid,150,1,0.071429
+Hnep_plasmid_150_2,20230501-2-Hal-plasmid-150-2-SB,Halomonas neptunia,Whole_Plasmid,150,2,0.15
+Hnep_plasmid_150_3,20230501-3-Hal-plasmid-150-3-SB,Halomonas neptunia,Whole_Plasmid,150,3,0.05
+Hnep_gDNA_150_1,20230501-10-Hal-gDNA-150-1-SB,Halomonas neptunia,Magmax_Barcode,150,1,0.071429
+Hnep_gDNA_150_2,20230501-11-Hal-gDNA-150-2-SB,Halomonas neptunia,Magmax_Barcode,150,2,0.15
+Hnep_gDNA_150_3,20230501-12-Hal-gDNA-150-3-SB,Halomonas neptunia,Magmax_Barcode,150,3,0.05
+Sele_plasmid_150_1,20230501-7-Sele-plasmid-150-1-SB,Shewanella electrodiphila,Whole_Plasmid,150,1,0.15
+Sele_plasmid_150_2,20230501-8-Sele-plasmid-150-2-SB,Shewanella electrodiphila,Whole_Plasmid,150,2,0.07
+Sele_plasmid_150_3,20230501-9-Sele-plasmid-150-3-SB,Shewanella electrodiphila,Whole_Plasmid,150,3,0.15
+Sele_gDNA_150_1,20230501-16-Sele-gDNA-150-1-SB,Shewanella electrodiphila,Magmax_Barcode,150,1,0.15
+Sele_gDNA_150_2,20230501-17-Sele-gDNA-150-2-SB,Shewanella electrodiphila,Magmax_Barcode,150,2,0.07
+Sele_gDNA_150_3,20230501-18-Sele-gDNA-150-3-SB,Shewanella electrodiphila,Magmax_Barcode,150,3,0.15
