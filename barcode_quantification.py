@@ -152,7 +152,7 @@ if __name__ == "__main__":
         action="store",
         default=None,
         required=True,
-        help="Mapping file of comma separated columns Sample,Pool.",
+        help="Mapping file of comma separated columns FileName,Sample.",
     )
     parser.add_argument(
         "-b",
