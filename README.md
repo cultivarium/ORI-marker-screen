@@ -8,6 +8,25 @@ This repository contains code and data for reproducing the analyses described in
 
 Conducting a plasmid pool screen and having issues with these scripts? Open an issue and we will respond to help ASAP!
 
+## Updated branch: for ingest. 
+
+Example commands:
+```
+python barcode_quantification.py -m test_data/test2.csv -d ./test_data/test2/
+```
+
+```
+python barcode_quantification.py -m test_data/test1.csv -d ./test_data/amplicon_fastq
+```
+
+Output:
+
+```
+barcode_results.tsv - raw counts for the run
+barcode_stats.tsv - statistics on the run
+portal_ingest.tsv - table ready for ingest 
+```
+
 ## Requirements
 
 1. Python library requirements are listed in `requirements.txt`.
