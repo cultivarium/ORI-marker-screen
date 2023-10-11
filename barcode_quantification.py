@@ -73,7 +73,7 @@ def run(fastq_directory, mapping_file):
         # Run BBduk
         command = (
             BBTOOLS
-            + "/bbduk.sh in1={f1} in2={f2} out1={f3} out2={f4} ref=./adapters.fa ktrim=r k=21 qtrim=r trimq=20 maq=20 minlen=50 entropy=0.3 threads=12"
+            + "bbduk.sh in1={f1} in2={f2} out1={f3} out2={f4} ref=./adapters.fa ktrim=r k=21 qtrim=r trimq=20 maq=20 minlen=50 entropy=0.3 threads=12"
         )
         command = command.format(
             f1=fn1,
@@ -101,7 +101,7 @@ def run(fastq_directory, mapping_file):
         fn2 = fn1.replace(".1.clean.fq.gz", ".2.clean.fq.gz")
 
         ## Run BBmerge
-        command = BBTOOLS + "/bbmerge.sh in1={f1} in2={f2} out={merged}.fasta"
+        command = BBTOOLS + "bbmerge.sh in1={f1} in2={f2} out={merged}.fasta"
         command = command.format(f1=fn1, f2=fn2, merged=base)
 
         output = subprocess.check_output(
@@ -198,7 +198,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    BBTOOLS = args.bbmap_folder.rstrip("/")
+    BBTOOLS = args.bbmap_folder.rstrip("/") + "/"
     mapping = pd.read_csv(args.mapping_file)
 
     run(args.fastq_directory.rstrip("/"), args.mapping_file)
