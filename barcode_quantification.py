@@ -11,21 +11,31 @@ from unidecode import unidecode
 
 def run(fastq_directory, mapping_file):
 
-    print("Making database...")
-    barcodes = []
-    f = open("barcode_references.fasta", "w+")
-    d = pd.read_csv("./barcodes.csv")
-    for index, row in d.iterrows():
-        barcode = unidecode(row["Corresponding ORI"].replace(" ", "_"))
-        f.write(">" + barcode + "\n")
-        f.write(row["ORI-barcode sequence"] + "\n")
-        barcodes.append(barcode)
-    f.close()
-
-    results = defaultdict(list)
-    stats = []
+    all_lib_info = pd.read_csv("library_info.csv")
 
     samples = pd.read_csv(mapping_file)
+    libraries = list(samples.Library.unique())
+    barcodes = set()
+    lib_to_cutoff = {} # The cutoff value for each library
+
+    for library in libraries:
+        print("Making Database for {}".format(library))
+        
+        f = open("{}.fasta".format(library), "w+")
+        lib_info = all_lib_info[all_lib_info.Library == library]
+        lib_to_cutoff[library] = lib_info['Negative control cutoff'].to_list()[0] # Should all be the same, take first
+
+        for index, row in lib_info.iterrows():
+            barcode = row['ORI']
+            f.write(">" + barcode + "\n")
+            f.write(row["ORI-barcode sequence"] + "\n")
+            barcodes.add(barcode)
+        f.close()
+
+    results = defaultdict(list) # Form the results table
+    portal_ingest = [] # Form the final table for portal ingest
+    stats = [] # Form the stats table
+
     for index, row in samples.iterrows():
         filename = row["FileName"]
         print(filename)
@@ -49,9 +59,16 @@ def run(fastq_directory, mapping_file):
             }
             stats.append(stats_sample)
             continue
+
+        ## If file is actually found
         fn1 = fn1[0]
         fn2 = fn1.replace("_R1_", "_R2_")
         base = "/".join(fn1.split("/")[:-1]) + "/" + fn1.split("/")[-1].split("_")[0]
+
+        ## Get library info
+        lib_info = all_lib_info[all_lib_info.Library == row['Library']]
+        barcode_to_pgl0 = pd.Series(lib_info.pGL0.values,index=lib_info.ORI).to_dict()
+        barcode_to_pgl2 = pd.Series(lib_info.pGL2.values,index=lib_info.ORI).to_dict()
 
         # Run BBduk
         command = (
@@ -95,8 +112,8 @@ def run(fastq_directory, mapping_file):
                 merged = int(line.split()[1])
 
         ## Run VSEARCH
-        command = "vsearch --search_exact {base}.fasta --db barcode_references.fasta --blast6out {base}.blast"
-        command = command.format(base=base)
+        command = "vsearch --search_exact {base}.fasta --db {library}.fasta --blast6out {base}.blast"
+        command = command.format(base=base, library=row['Library']) # Map to correct library for this sample
         output = subprocess.check_output(
             command, shell=True, stderr=subprocess.STDOUT
         ).decode()
@@ -115,6 +132,15 @@ def run(fastq_directory, mapping_file):
         results["Sample"].append(row["Sample"])
         for barcode in barcodes:
             results[barcode].append(barcode_hits[barcode])
+            if barcode != 'Dummy':
+                dat = {
+                    "Strain":row['Strain'],
+                    "ORI (pGL0)": barcode_to_pgl0[barcode],
+                    "Plasmid (pGL2)": barcode_to_pgl2[barcode],
+                    "Fold enrichment": round(barcode_hits[barcode] / (1+barcode_hits['Dummy']), 2),
+                    "Cutoff": lib_to_cutoff[row['Library']]
+                    }
+                portal_ingest.append(dat)
 
         stats_sample = {
             "Sample": row["Sample"],
@@ -129,9 +155,13 @@ def run(fastq_directory, mapping_file):
 
     results = pd.DataFrame(results)
     stats = pd.DataFrame(stats)
+    portal_ingest = pd.DataFrame(portal_ingest)
 
     stats.to_csv("barcode_stats.tsv", sep="\t", index=False)
     results.to_csv("barcode_results.tsv", sep="\t", index=False)
+    portal_ingest.to_csv("portal_ingest.tsv", sep="\t", index=False)
+
+    ## Now, let's process it
 
 
 if __name__ == "__main__":
@@ -152,8 +182,9 @@ if __name__ == "__main__":
         action="store",
         default=None,
         required=True,
-        help="Mapping file of comma separated columns Sample,Pool.",
+        help="Mapping file of comma separated columns FileName,Sample,Strain,Library.",
     )
+
     parser.add_argument(
         "-b",
         "--bbmap_folder",
@@ -162,6 +193,8 @@ if __name__ == "__main__":
         required=False,
         help="Directory containing BBTools on your system",
     )
+
+
 
     args = parser.parse_args()
 
