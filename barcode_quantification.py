@@ -9,7 +9,7 @@ from Bio import SeqIO
 from unidecode import unidecode
 
 
-def run(fastq_directory, mapping_file):
+def run(fastq_directory, mapping_file, output_directory):
 
     all_lib_info = pd.read_csv("library_info.csv")
 
@@ -157,9 +157,9 @@ def run(fastq_directory, mapping_file):
     stats = pd.DataFrame(stats)
     portal_ingest = pd.DataFrame(portal_ingest)
 
-    stats.to_csv("barcode_stats.tsv", sep="\t", index=False)
-    results.to_csv("barcode_results.tsv", sep="\t", index=False)
-    portal_ingest.to_csv("portal_ingest.tsv", sep="\t", index=False)
+    stats.to_csv(os.path.join(output_directory, "barcode_stats.tsv"), sep="\t", index=False)
+    results.to_csv(os.path.join(output_directory, "barcode_results.tsv"), sep="\t", index=False)
+    portal_ingest.to_csv(os.path.join(output_directory, "portal_ingest.tsv"), sep="\t", index=False)
 
     ## Now, let's process it
 
@@ -193,6 +193,14 @@ if __name__ == "__main__":
         required=False,
         help="Directory containing BBTools on your system",
     )
+    parser.add_argument(
+        "-o",
+        "--output_folder",
+        action="store",
+        default=".",
+        required=False,
+        help="Directory to store output files",
+    )
 
 
 
@@ -201,4 +209,4 @@ if __name__ == "__main__":
     BBTOOLS = args.bbmap_folder.rstrip("/") + "/"
     mapping = pd.read_csv(args.mapping_file)
 
-    run(args.fastq_directory.rstrip("/"), args.mapping_file)
+    run(args.fastq_directory.rstrip("/"), args.mapping_file, args.output_folder.rstrip("/"))
