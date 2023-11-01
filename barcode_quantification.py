@@ -132,7 +132,7 @@ def run(fastq_directory, mapping_file, output_directory):
         results["Sample"].append(row["Sample"])
         for barcode in barcodes:
             results[barcode].append(barcode_hits[barcode])
-            if barcode != 'Dummy':
+            if barcode != 'Dummy' and barcode in barcode_to_pgl0:
                 dat = {
                     "Strain":row['Strain'],
                     "ORI (pGL0)": barcode_to_pgl0[barcode],
