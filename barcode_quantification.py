@@ -134,6 +134,8 @@ def run(fastq_directory, mapping_file, output_directory):
             results[barcode].append(barcode_hits[barcode])
             if barcode != 'Dummy' and barcode in barcode_to_pgl0:
                 dat = {
+                    "Sample_Name":row['Sample'],
+                    "Sample_ID":row['FileName'],
                     "Strain":row['Strain'],
                     "ORI (pGL0)": barcode_to_pgl0[barcode],
                     "Plasmid (pGL2)": barcode_to_pgl2[barcode],
@@ -144,6 +146,7 @@ def run(fastq_directory, mapping_file, output_directory):
 
         stats_sample = {
             "Sample": row["Sample"],
+            "Sample_ID":row['FileName'],
             "Total_Reads": reads,
             "Quality_trimmed": qtrimmed,
             "Adapter_trimmed": ktrimmed,
