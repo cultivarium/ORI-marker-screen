@@ -73,7 +73,7 @@ def run(fastq_directory, mapping_file, output_directory):
         # Run BBduk
         command = (
             BBTOOLS
-            + "bbduk.sh in1={f1} in2={f2} out1={f3} out2={f4} ref=./adapters.fa ktrim=r k=21 qtrim=r trimq=20 maq=20 minlen=50 entropy=0.3 threads=12"
+            + "bbduk.sh in1={f1} in2={f2} out1={f3} out2={f4} ref=./adapters.fa ktrim=r k=21 qtrim=r trimq=20 maq=20 minlen=50 entropy=0.3 threads=12 forcetrimleft=8 forcetrimright2=8"
         )
         command = command.format(
             f1=fn1,
@@ -112,7 +112,7 @@ def run(fastq_directory, mapping_file, output_directory):
                 merged = int(line.split()[1])
 
         ## Run VSEARCH
-        command = "vsearch --search_exact {base}.fasta --db {library}.fasta --blast6out {base}.blast"
+        command = "vsearch --usearch_global {base}.fasta --id 0.97 --db {library}.fasta --blast6out {base}.blast"
         command = command.format(base=base, library=row['Library']) # Map to correct library for this sample
         output = subprocess.check_output(
             command, shell=True, stderr=subprocess.STDOUT
