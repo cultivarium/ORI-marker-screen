@@ -6,6 +6,8 @@ Analyses and data for identifying and quantifying abundances of origins of repli
 
 This repository contains code and data for reproducing the analyses described in "A scalable framework for high-throughput identification of functional origins of replication in non-model bacteria". It also contains scripts and examples for how to identify and quantify the origins of replications present in a pool of plasmids, either after or before a selective screen. 
 
+Finally, it contains scripts and reference data for analyzing amplicon data from screens using the MACKEREL (Modular, NGS-trACKable ExpRession ELement) promoter library, which is a collection of genetic parts consisting of 426 bacterial promoter-RBS sequence variants. These scripts can be found in the `./promoter_screen/` directory.
+
 Conducting a plasmid pool screen and having issues with these scripts? Open an issue and we will respond to help ASAP!
 
 ## Requirements
