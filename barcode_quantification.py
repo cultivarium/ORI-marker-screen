@@ -9,7 +9,7 @@ from Bio import SeqIO
 from unidecode import unidecode
 
 
-def run(fastq_directory, mapping_file, output_directory):
+def run(fastq_directory, mapping_file, output_directory, unmerged_reads):
 
     all_lib_info = pd.read_csv("library_info.csv")
 
@@ -73,7 +73,7 @@ def run(fastq_directory, mapping_file, output_directory):
         # Run BBduk
         command = (
             BBTOOLS
-            + "bbduk.sh in1={f1} in2={f2} out1={f3} out2={f4} ref=./adapters.fa ktrim=r k=21 qtrim=r trimq=20 maq=20 minlen=50 entropy=0.3 threads=12 forcetrimleft=8 forcetrimright2=8"
+            + "bbduk.sh in1={f1} in2={f2} out1={f3} out2={f4} ref=./adapters.fa ktrim=r k=21 qtrim=r trimq=15 maq=15 minlen=30 entropy=0.3 threads=12 forcetrimleft=8 forcetrimright2=8"
         )
         command = command.format(
             f1=fn1,
@@ -82,10 +82,11 @@ def run(fastq_directory, mapping_file, output_directory):
             f4=base + ".2.clean.fq.gz",
             f5=base,
         )
-
+        
         output = subprocess.check_output(
-            command, shell=True, stderr=subprocess.STDOUT
-        ).decode()
+                command, shell=True, stderr=subprocess.STDOUT
+            ).decode()
+
         for line in output.split("\n"):
             if line.startswith("Input:"):
                 reads = int(line.split(" reads")[0].split()[-1]) / 2
@@ -101,7 +102,11 @@ def run(fastq_directory, mapping_file, output_directory):
         fn2 = fn1.replace(".1.clean.fq.gz", ".2.clean.fq.gz")
 
         ## Run BBmerge
-        command = BBTOOLS + "bbmerge.sh in1={f1} in2={f2} out={merged}.fasta"
+
+        if unmerged_reads:
+            command = BBTOOLS + "bbmerge.sh in1={f1} in2={f2} out={merged}.fasta maxloose=t outu={merged}_u1.fasta outu2={merged}_u2.fasta"
+        else:
+            command = BBTOOLS + "bbmerge.sh in1={f1} in2={f2} out={merged}.fasta maxloose=t"
         command = command.format(f1=fn1, f2=fn2, merged=base)
 
         output = subprocess.check_output(
@@ -111,8 +116,19 @@ def run(fastq_directory, mapping_file, output_directory):
             if line.startswith("Joined"):
                 merged = int(line.split()[1])
 
+        # Cat R1 and merged files
+        if unmerged_reads:
+            with open(base + ".fasta", 'r') as file1, open(base + "_u1.fasta", 'r') as file2:
+                file1_contents = file1.read()
+                file2_contents = file2.read()
+            with open(base + '_combined.fasta', 'w') as combined_file:
+                combined_file.write(file1_contents + "\n" + file2_contents)
+            command = "vsearch --usearch_global {base}_combined.fasta --id 0.95 --db {library}.fasta --blast6out {base}.blast"
+        else:
+            command = "vsearch --usearch_global {base}.fasta --id 0.95 --db {library}.fasta --blast6out {base}.blast"
+
+
         ## Run VSEARCH
-        command = "vsearch --usearch_global {base}.fasta --id 0.97 --db {library}.fasta --blast6out {base}.blast"
         command = command.format(base=base, library=row['Library']) # Map to correct library for this sample
         output = subprocess.check_output(
             command, shell=True, stderr=subprocess.STDOUT
@@ -205,6 +221,13 @@ if __name__ == "__main__":
         help="Directory to store output files",
     )
 
+    parser.add_argument(
+        "--unmerged_reads",
+        action="store_true",
+        default = False,
+        required=False,
+        help="Also process unmerged R1 (useful with 2x75 bp or lower quality reads)",
+    )
 
 
     args = parser.parse_args()
@@ -212,4 +235,4 @@ if __name__ == "__main__":
     BBTOOLS = args.bbmap_folder.rstrip("/") + "/"
     mapping = pd.read_csv(args.mapping_file)
 
-    run(args.fastq_directory.rstrip("/"), args.mapping_file, args.output_folder.rstrip("/"))
+    run(args.fastq_directory.rstrip("/"), args.mapping_file, args.output_folder.rstrip("/"), args.unmerged_reads)
