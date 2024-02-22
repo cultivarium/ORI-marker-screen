@@ -4,9 +4,58 @@ import os
 import subprocess
 from collections import defaultdict
 
+import matplotlib
+import matplotlib.pyplot as plt
 import pandas as pd
+import seaborn as sns
 from Bio import SeqIO
 from unidecode import unidecode
+
+
+def make_plots(portal_ingest, stats, output_directory):
+
+    for_heatmap = portal_ingest
+    for_heatmap.loc[for_heatmap['Fold enrichment'] < for_heatmap['Cutoff'], 'Fold enrichment'] = None
+    for_heatmap['ORI'] = for_heatmap['Plasmid (pGL2)'].str.split("_").str[-1]
+    for_heatmap['Strain2'] = for_heatmap['Strain'] + "-" + for_heatmap['Sample_Name']
+
+    h = for_heatmap.pivot(index='Strain2', columns='ORI', values='Fold enrichment').sort_index()
+
+    heatmap = sns.heatmap(h, cmap='viridis', linewidth=0.1, linecolor='grey', norm=matplotlib.colors.LogNorm(), cbar_kws={'format': '%.0f'})
+    heatmap.set_yticklabels(heatmap.get_yticklabels(), ha='right')
+    plt.savefig(os.path.join(output_directory, "heatmap_result.pdf"), bbox_inches='tight')
+
+
+    # Sort the dataframe by "Matched reads" column
+    stats['Matched_P'] = round(stats['Matched'] / stats['Total_Reads'] * 100, 1)
+
+    s_sorted = stats.set_index("Sample").sort_values(by='Matched')
+
+    # Create a figure with two subplots
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 12))
+
+    ax1.axvline(1000, color='red')
+
+    # Plot the "Matched reads" bar chart
+    s_sorted['Matched'].plot.barh(ax=ax1)
+    ax1.set_xlabel('Number of reads')
+    ax1.set_ylabel('')
+    ax1.set_xscale('log')  # Set x-axis to log scale
+
+    ax1.set_title('Reads hitting ORI barcodes')
+
+    s_sorted = stats.set_index("Sample").sort_values(by='Matched_P')
+
+    # Plot the "Matched/Total_Reads" bar chart
+    s_sorted['Matched_P'].plot.barh(ax=ax2)
+    ax2.set_xlabel('Percentage of reads matched (%)')
+    ax2.set_ylabel('')
+    ax2.set_title('Percentage of total reads matching ORI barcodes')
+    ax2.axvline(20, color='red')
+
+    # Adjust the layout and display the plot
+    plt.tight_layout()
+    plt.savefig(os.path.join(output_directory, "quality_results.pdf"), bbox_inches='tight')
 
 
 def run(fastq_directory, mapping_file, output_directory, unmerged_reads):
@@ -180,7 +229,8 @@ def run(fastq_directory, mapping_file, output_directory, unmerged_reads):
     results.to_csv(os.path.join(output_directory, "barcode_results.tsv"), sep="\t", index=False)
     portal_ingest.to_csv(os.path.join(output_directory, "portal_ingest.tsv"), sep="\t", index=False)
 
-    ## Now, let's process it
+    ## Now, let's make some plots
+    make_plots(portal_ingest, stats, output_directory)
 
 
 if __name__ == "__main__":
