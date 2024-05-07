@@ -21,8 +21,14 @@ def make_plots(portal_ingest, stats, output_directory):
 
     h = for_heatmap.pivot(index='Strain2', columns='ORI', values='Fold enrichment').sort_index()
 
-    heatmap = sns.heatmap(h, cmap='viridis', linewidth=0.1, linecolor='grey', norm=matplotlib.colors.LogNorm(), cbar_kws={'format': '%.0f'})
+    if not for_heatmap['Fold enrichment'].isnull().all():
+        heatmap = sns.heatmap(h, cmap='viridis', linewidth=0.1, linecolor='grey', norm=matplotlib.colors.LogNorm(), cbar_kws={'format': '%.0f'})
+    else:
+        heatmap = sns.heatmap(h.fillna(0), cmap='viridis', linewidth=0.1, linecolor='grey', cbar_kws={'format': '%.0f'})
+
     heatmap.set_yticklabels(heatmap.get_yticklabels(), ha='right')
+    plt.yticks(range(len(h.index)), h.index)
+
     plt.savefig(os.path.join(output_directory, "heatmap_result.pdf"), bbox_inches='tight')
 
 
