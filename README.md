@@ -34,7 +34,7 @@ Data files specific for the Cultivarium Possum Toolkit library of ORIs are avail
 - `barcodes.csv` - A list of the Barcodes associated with each ORI in the library.
 - `origins.tsv` - Start and stop locations of each ORI region on each plasmid in the library.
 - `./pool_data/*` - FASTA and Genbank files describing the plasmids (and their respective ORIs) within the Cultivarium Possum Toolkit. 
-- Raw sequencing data for our preprint can be obtained through AWS S3: `aws s3 cp --recursive s3://cultivarium-sequencing/ORI-MARKER-RAW-DATA-MAY2023/ .`
+- Raw sequencing data for our preprint can be obtained through AWS S3: `aws s3 cp --recursive s3://cultivarium-publication-data/ORI-MARKER-RAW-DATA-MAY2023/ .`
 
 ## Amplicon sequencing for barcoded ORI quantification
 
