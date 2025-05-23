@@ -62,18 +62,25 @@ Example usage: `python barcode_quantification.py -d ms_data/amplicon_fastq/ -m .
 All arguments:
 
 ```
-usage: barcode_quantification.py [-h] -d FASTQ_DIRECTORY -m MAPPING_FILE [-b BBMAP_FOLDER]
+usage: barcode_quantification.py [-h] -d FASTQ_DIRECTORY -m MAPPING_FILE [-l LIBRARY_INFO] [-b BBMAP_FOLDER] [-o OUTPUT_FOLDER]
+                                 [--unmerged_reads]
 
-Whole plasmid sequencing of a plasmid ORI pool.
+Amplicon BarSeq plasmid sequencing of a plasmid ORI pool.
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   -d FASTQ_DIRECTORY, --fastq_directory FASTQ_DIRECTORY
                         Directory of FASTQ files. File names must take the form: sample_*_R1_*.fastq.gz
   -m MAPPING_FILE, --mapping_file MAPPING_FILE
-                        Mapping file of comma separated columns Sample,Pool.
+                        Mapping file of comma separated columns FileName,Sample,Strain,Library.
+  -l LIBRARY_INFO, --library_info LIBRARY_INFO
+                        Library info file of comma separated information about ORIs in the library. If running input samples, 'Negative control
+                        cutoff' can be blank or ignored. 
   -b BBMAP_FOLDER, --bbmap_folder BBMAP_FOLDER
                         Directory containing BBTools on your system
+  -o OUTPUT_FOLDER, --output_folder OUTPUT_FOLDER
+                        Directory to store output files
+  --unmerged_reads      Also process unmerged R1 (useful with 2x75 bp or lower quality reads)
 ```
 
 Example outputs:
@@ -81,6 +88,31 @@ Example outputs:
 `./ms_data/barcode_stats.tsv` - Provides statistics on read filtering, merging, and matching for each sample. Have a look at this file to understand general quality of your run and identify any potential issues.
 
 `./ms_data/barcode_results.tsv` - The read pair / amplicon counts for each ORI within each sample.
+
+## Running on input libraries
+
+The pipeline can now be run on input plasmid libraries, not just strains. To do so:
+
+1. first, in the mapping_file, specify "Input" for the sample in the "Strain" column. 
+2. Specify the new library name in the "Library" column. 
+3. Pass a new library_info.csv file containing the metadata for this new library. Crucially, the "Negative control cutoff" field in this library file can/should be empty (it will be ignored) for input files, because these libraries do not have their cutoffs determined yet.
+4. Run the pipeline. Now, when running on any input samples, there will be a new file created, called input_samples.tsv. It has these fields:
+
+```
+Library	pGL0	Abundance	Cutoff
+pGL2_147	pSa	0.5133858267716536	17.537685571840676
+pGL2_147	pSG5	0.2692913385826772	14.709026608640569
+pGL2_147	2μ	0.2251968503937008	14.198043053997964
+pGL2_147	pSC101ts	0.6787401574803149	19.45387390175043
+pGL2_147	pNG2	0.584251968503937	18.358909141802002
+```
+
+Where the "Cutoff" column is the defined abundance cutoff. This is a z-test cutoff for the abundance (which is the reads of the origin normalized to dummy origin reads). It is calculated by assuming a standard deviation of 0.5 (the high range of observed standard deviations), a p-value of 0.05, and a bonferroni correction based on the number of origins in the library.
+
+### There are two test datasets of input libraries: `./test_data/test_inputs.csv` and `./test_data/test_inputs_and_strains.csv`, and their corresponding outputs. 
+Note these aren't actual input libraries, they are just formatted as if they were (which is OK). Their samples are in amplicon_data.fastq.gz.
+
+#### There is real output of our standard "v3" ORI libraries: `test_data/test_real_inputs.csv`. This can be ingested and used for future conjugation runs of this library.
 
 
 ## Whole plasmid sequencing ORI quantification

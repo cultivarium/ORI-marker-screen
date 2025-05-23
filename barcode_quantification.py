@@ -4,12 +4,13 @@ import os
 import subprocess
 from collections import defaultdict
 
+
 import matplotlib
+import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-from Bio import SeqIO
-from unidecode import unidecode
+from scipy.stats import norm
 
 
 def make_plots(portal_ingest, stats, output_directory):
@@ -87,8 +88,12 @@ def make_plots(portal_ingest, stats, output_directory):
     )
 
 
-def run(fastq_directory, mapping_file, output_directory, unmerged_reads):
-    all_lib_info = pd.read_csv("library_info.csv")
+def run(fastq_directory, mapping_file, library_info, output_directory, unmerged_reads):
+
+    if not os.path.exists(output_directory):
+        os.makedirs(output_directory)
+
+    all_lib_info = pd.read_csv(library_info)
 
     samples = pd.read_csv(mapping_file)
     libraries = list(samples.Library.unique())
@@ -235,7 +240,11 @@ def run(fastq_directory, mapping_file, output_directory, unmerged_reads):
         results["Sample"].append(row["Sample"])
         for barcode in barcodes:
             results[barcode].append(barcode_hits[barcode])
-            if barcode != "Dummy" and barcode in barcode_to_pgl0:
+            if (
+                row["Strain"] != "Input"
+                and barcode != "Dummy"
+                and barcode in barcode_to_pgl0
+            ):
                 dat = {
                     "Sample_Name": row["Sample"],
                     "Sample_ID": row["FileName"],
@@ -275,13 +284,43 @@ def run(fastq_directory, mapping_file, output_directory, unmerged_reads):
         os.path.join(output_directory, "portal_ingest.tsv"), sep="\t", index=False
     )
 
-    ## Now, let's make some plots
-    make_plots(portal_ingest, stats, output_directory)
+    ## Now, let's check for any input files in this run.
+    if samples[samples.Strain == "Input"].shape[0] > 0:
+        input_samples = samples[samples.Strain == "Input"]
+        input_results = results[results.Sample.isin(input_samples["Sample"])].set_index(
+            "Sample"
+        )
+        input_results = input_results.div(input_results["Dummy"] + 1, axis=0)
+
+        sample2library = samples.set_index("Sample")["Library"].to_dict()
+        input_results["Library"] = input_results.index.map(sample2library)
+        input_results = input_results.groupby("Library").mean()
+        input_results = input_results.reset_index().melt(
+            id_vars=["Library"], var_name="pGL0", value_name="Abundance"
+        )
+
+        # Calculate the minimum result for p-value < 0.05 for every abundance
+        # note bonferroni correction for the new library
+        input_results["Cutoff"] = 10 ** norm.ppf(
+            1 - 0.05 / input_samples.shape[0],
+            loc=np.log10(input_results["Abundance"] + 1),
+            scale=0.5,
+        )
+        input_results = input_results[
+            ["Library", "pGL0", "Abundance", "Cutoff"]
+        ].sort_values("Library")
+        input_results.to_csv(
+            os.path.join(output_directory, "input_samples.tsv"), sep="\t", index=False
+        )
+
+    ## Now, let's make some plots, only if there are non-input samples
+    if samples[samples.Strain != "Input"].shape[0] > 0:
+        make_plots(portal_ingest, stats, output_directory)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Whole plasmid sequencing of a plasmid ORI pool."
+        description="Amplicon BarSeq plasmid sequencing of a plasmid ORI pool."
     )
     parser.add_argument(
         "-d",
@@ -298,6 +337,15 @@ if __name__ == "__main__":
         default=None,
         required=True,
         help="Mapping file of comma separated columns FileName,Sample,Strain,Library.",
+    )
+
+    parser.add_argument(
+        "-l",
+        "--library_info",
+        action="store",
+        default="library_info.csv",
+        required=False,
+        help="Library info file of comma separated information about ORIs in the library. If running input samples, 'Negative control cutoff' can be blank or ignored.",
     )
 
     parser.add_argument(
@@ -333,6 +381,7 @@ if __name__ == "__main__":
     run(
         args.fastq_directory.rstrip("/"),
         args.mapping_file,
+        args.library_info,
         args.output_folder.rstrip("/"),
         args.unmerged_reads,
     )
