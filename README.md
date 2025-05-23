@@ -109,10 +109,10 @@ pGL2_147	pNG2	0.584251968503937	18.358909141802002
 
 Where the "Cutoff" column is the defined abundance cutoff. This is a z-test cutoff for the abundance (which is the reads of the origin normalized to dummy origin reads). It is calculated by assuming a standard deviation of 0.5 (the high range of observed standard deviations), a p-value of 0.05, and a bonferroni correction based on the number of origins in the library.
 
-### There are two test datasets of input libraries: `./test_data/test_inputs.csv` and `./test_data/test_inputs_and_strains.csv`, and their corresponding outputs. 
+There are two test datasets of input libraries: `./test_data/test_inputs.csv` and `./test_data/test_inputs_and_strains.csv`, and their corresponding outputs. 
 Note these aren't actual input libraries, they are just formatted as if they were (which is OK). Their samples are in amplicon_data.fastq.gz.
 
-#### There is real output of our standard "v3" ORI libraries: `test_data/test_real_inputs.csv`. This can be ingested and used for future conjugation runs of this library.
+There is real output of our standard "v3" ORI libraries: `test_data/test_real_inputs.csv`. **This can be ingested and used for future conjugation runs of this library.**
 
 
 ## Whole plasmid sequencing ORI quantification
