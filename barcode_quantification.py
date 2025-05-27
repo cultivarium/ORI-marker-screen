@@ -280,9 +280,11 @@ def run(fastq_directory, mapping_file, library_info, output_directory, unmerged_
     results.to_csv(
         os.path.join(output_directory, "barcode_results.tsv"), sep="\t", index=False
     )
-    portal_ingest.to_csv(
-        os.path.join(output_directory, "portal_ingest.tsv"), sep="\t", index=False
-    )
+
+    if samples[samples.Strain != 'Input'].shape[0] > 0:
+        portal_ingest.to_csv(
+            os.path.join(output_directory, "portal_ingest.tsv"), sep="\t", index=False
+        )
 
     ## Now, let's check for any input files in this run.
     if samples[samples.Strain == "Input"].shape[0] > 0:
