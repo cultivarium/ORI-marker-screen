@@ -99,12 +99,12 @@ The pipeline can now be run on input plasmid libraries, not just strains. To do 
 4. Run the pipeline. Now, when running on any input samples, there will be a new file created, called input_samples.tsv. It has these fields:
 
 ```
-Library	pGL0	Abundance	Cutoff
-pGL2_147	pSa	0.5133858267716536	17.537685571840676
-pGL2_147	pSG5	0.2692913385826772	14.709026608640569
-pGL2_147	2μ	0.2251968503937008	14.198043053997964
-pGL2_147	pSC101ts	0.6787401574803149	19.45387390175043
-pGL2_147	pNG2	0.584251968503937	18.358909141802002
+FileName	Sample	Library	pGL0	Abundance	Cutoff
+20230427-55-A10-MBS-SB	A10_MBS	pGL2_147	pGL0_12 [pAMβ1]	0.0015552099533437014	11.606399402107586
+20230427-55-A10-MBS-SB	A10_MBS	pGL2_147	pGL0_113 [Dummy]	0.9984447900466563	23.158731726255038
+20230427-55-A10-MBS-SB	A10_MBS	pGL2_147	pGL0_3 [RSF1010]	0.038880248833592534	12.038936025788614
+20230427-55-A10-MBS-SB	A10_MBS	pGL2_147	pGL0_16 [2μ]	0.22706065318818042	14.219641503513795
+20230427-55-A10-MBS-SB	A10_MBS	pGL2_147	pGL0_24 [pBBR1-UP]	1.401244167962675	27.826522790146132
 ```
 
 Where the "Cutoff" column is the defined abundance cutoff. This is a z-test cutoff for the abundance (which is the reads of the origin normalized to dummy origin reads). It is calculated by assuming a standard deviation of 0.5 (the high range of observed standard deviations), a p-value of 0.05, and a bonferroni correction based on the number of origins in the library.

@@ -295,11 +295,15 @@ def run(fastq_directory, mapping_file, library_info, output_directory, unmerged_
         input_results = input_results.div(input_results["Dummy"] + 1, axis=0)
 
         sample2library = samples.set_index("Sample")["Library"].to_dict()
+        sample2filename = samples.set_index("Sample")["FileName"].to_dict()
+
         input_results["Library"] = input_results.index.map(sample2library)
-        input_results = input_results.groupby("Library").mean()
+        input_results = input_results.groupby(["Library", "Sample"]).mean()
         input_results = input_results.reset_index().melt(
-            id_vars=["Library"], var_name="pGL0", value_name="Abundance"
+            id_vars=["Library", "Sample"], var_name="ORI", value_name="Abundance"
         )
+        input_results["pGL0"] = input_results["ORI"].map(pd.Series(lib_info.pGL0.values, index=lib_info.ORI).to_dict())
+        input_results["FileName"] = input_results["Sample"].map(sample2filename)
 
         # Calculate the minimum result for p-value < 0.05 for every abundance
         # note bonferroni correction for the new library
@@ -309,7 +313,7 @@ def run(fastq_directory, mapping_file, library_info, output_directory, unmerged_
             scale=0.5,
         )
         input_results = input_results[
-            ["Library", "pGL0", "Abundance", "Cutoff"]
+            ["FileName", "Sample", "Library", "pGL0", "Abundance", "Cutoff"]
         ].sort_values("Library")
         input_results.to_csv(
             os.path.join(output_directory, "input_samples.tsv"), sep="\t", index=False
