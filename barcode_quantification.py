@@ -98,19 +98,17 @@ def run(fastq_directory, mapping_file, library_info, output_directory, unmerged_
     samples = pd.read_csv(mapping_file)
     libraries = list(samples.Library.unique())
     barcodes = set()
-    lib_to_cutoff = {}  # The cutoff value for each library
+    lib_ori_to_cutoff = defaultdict(dict[str, float])  # The cutoff value for each library & ORI combination
 
     for library in libraries:
         print("Making Database for {}".format(library))
 
         f = open("{}.fasta".format(library), "w+")
         lib_info = all_lib_info[all_lib_info.Library == library]
-        lib_to_cutoff[library] = lib_info["Negative control cutoff"].to_list()[
-            0
-        ]  # Should all be the same, take first
 
-        for index, row in lib_info.iterrows():
+        for _, row in lib_info.iterrows():            
             barcode = row["ORI"]
+            lib_ori_to_cutoff[library][barcode] = row["Negative control cutoff"]
             f.write(">" + barcode + "\n")
             f.write(row["ORI-barcode sequence"] + "\n")
             barcodes.add(barcode)
@@ -120,7 +118,7 @@ def run(fastq_directory, mapping_file, library_info, output_directory, unmerged_
     portal_ingest = []  # Form the final table for portal ingest
     stats = []  # Form the stats table
 
-    for index, row in samples.iterrows():
+    for _, row in samples.iterrows():
         filename = row["FileName"]
         print(filename)
         fn1 = glob.glob(fastq_directory + "/" + filename + "*_R1_*.fastq.gz")
@@ -254,7 +252,7 @@ def run(fastq_directory, mapping_file, library_info, output_directory, unmerged_
                     "Fold enrichment": round(
                         barcode_hits[barcode] / (1 + barcode_hits["Dummy"]), 2
                     ),
-                    "Cutoff": lib_to_cutoff[row["Library"]],
+                    "Cutoff": lib_ori_to_cutoff.get(row["Library"], {}).get(barcode, None),
                 }
                 portal_ingest.append(dat)
 
