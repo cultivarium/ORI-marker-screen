@@ -252,7 +252,7 @@ def run(fastq_directory, mapping_file, library_info, output_directory, unmerged_
                     "Fold enrichment": round(
                         barcode_hits[barcode] / (1 + barcode_hits["Dummy"]), 2
                     ),
-                    "Cutoff": lib_ori_to_cutoff[row["Library"]][barcode],
+                    "Cutoff": lib_ori_to_cutoff.get(row["Library"], {}).get(barcode, None),
                 }
                 portal_ingest.append(dat)
 
