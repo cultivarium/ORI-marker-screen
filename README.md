@@ -63,7 +63,7 @@ All arguments:
 
 ```
 usage: barcode_quantification.py [-h] -d FASTQ_DIRECTORY -m MAPPING_FILE [-l LIBRARY_INFO] [-b BBMAP_FOLDER] [-o OUTPUT_FOLDER]
-                                 [--unmerged_reads]
+                                 [--unmerged_reads] [--nanopore]
 
 Amplicon BarSeq plasmid sequencing of a plasmid ORI pool.
 
@@ -71,6 +71,7 @@ options:
   -h, --help            show this help message and exit
   -d FASTQ_DIRECTORY, --fastq_directory FASTQ_DIRECTORY
                         Directory of FASTQ files. File names must take the form: sample_*_R1_*.fastq.gz
+                        (or sample*.fastq[.gz], one file per sample, with --nanopore)
   -m MAPPING_FILE, --mapping_file MAPPING_FILE
                         Mapping file of comma separated columns FileName,Sample,Strain,Library.
   -l LIBRARY_INFO, --library_info LIBRARY_INFO
@@ -81,6 +82,28 @@ options:
   -o OUTPUT_FOLDER, --output_folder OUTPUT_FOLDER
                         Directory to store output files
   --unmerged_reads      Also process unmerged R1 (useful with 2x75 bp or lower quality reads)
+  --nanopore            Single-end Nanopore amplicon mode (see below)
+```
+
+### Nanopore amplicon reads (`--nanopore`)
+
+The same barcode amplicons can be sequenced single-end on Oxford Nanopore. Because
+each Nanopore read already spans the entire amplicon, no read pairing/merging is
+needed, and the reads are not strand-oriented. Pass `--nanopore` to handle this:
+
+- **Input:** one FASTQ per sample (gzipped or not), matched as `FileName*.fastq[.gz]`
+  (instead of paired `*_R1_*.fastq.gz` / `*_R2_*.fastq.gz`).
+- **Trimming:** BBduk runs single-end with the same adapter/quality/entropy
+  parameters (the R2-only `forcetrimright2` is dropped).
+- **Merging:** skipped — the cleaned reads are taken directly as the full-length
+  amplicons (they are converted to FASTA with `reformat.sh`).
+- **Matching:** VSEARCH searches **both strands** (`--strand both`), since Nanopore
+  reads arrive in both orientations. The identity threshold is unchanged (0.95).
+
+All outputs are identical in format to the Illumina mode. Example:
+
+```
+python barcode_quantification.py -d ./nanopore_fastq -m mapping.csv -l library_info.csv --nanopore
 ```
 
 Example outputs:

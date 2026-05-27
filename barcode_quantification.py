@@ -88,7 +88,7 @@ def make_plots(portal_ingest, stats, output_directory):
     )
 
 
-def run(fastq_directory, mapping_file, library_info, output_directory, unmerged_reads):
+def run(fastq_directory, mapping_file, library_info, output_directory, unmerged_reads, nanopore=False):
 
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
@@ -121,7 +121,11 @@ def run(fastq_directory, mapping_file, library_info, output_directory, unmerged_
     for _, row in samples.iterrows():
         filename = row["FileName"]
         print(filename)
-        fn1 = glob.glob(fastq_directory + "/" + filename + "*_R1_*.fastq.gz")
+        if nanopore:
+            # Single-end Nanopore amplicon reads (one file per sample, gz optional)
+            fn1 = glob.glob(fastq_directory + "/" + filename + "*.fastq*")
+        else:
+            fn1 = glob.glob(fastq_directory + "/" + filename + "*_R1_*.fastq.gz")
 
         if len(fn1) == 0:  # file not found
             print("File not found: " + row["Sample"])
@@ -144,48 +148,76 @@ def run(fastq_directory, mapping_file, library_info, output_directory, unmerged_
 
         ## If file is actually found
         fn1 = fn1[0]
-        fn2 = fn1.replace("_R1_", "_R2_")
-        base = "/".join(fn1.split("/")[:-1]) + "/" + fn1.split("/")[-1].split("_")[0]
+        if nanopore:
+            # No mate file; use the full FileName as a unique base (sample names
+            # may share a leading token, unlike the Illumina naming convention).
+            base = os.path.join(fastq_directory, filename)
+        else:
+            fn2 = fn1.replace("_R1_", "_R2_")
+            base = "/".join(fn1.split("/")[:-1]) + "/" + fn1.split("/")[-1].split("_")[0]
 
         ## Get library info
         lib_info = all_lib_info[all_lib_info.Library == row["Library"]]
         barcode_to_pgl0 = pd.Series(lib_info.pGL0.values, index=lib_info.ORI).to_dict()
         barcode_to_pgl2 = pd.Series(lib_info.pGL2.values, index=lib_info.ORI).to_dict()
 
-        # Run BBduk
-        command = (
-            BBTOOLS
-            + "bbduk.sh in1={f1} in2={f2} out1={f3} out2={f4} ref=./adapters.fa ktrim=r k=21 qtrim=r trimq=15 maq=15 minlen=30 entropy=0.3 threads=12 forcetrimleft=8 forcetrimright2=8"
-        )
-        command = command.format(
-            f1=fn1,
-            f2=fn2,
-            f3=base + ".1.clean.fq.gz",
-            f4=base + ".2.clean.fq.gz",
-            f5=base,
-        )
+        # Run BBduk. Same adapter/quality/entropy parameters for both platforms;
+        # Nanopore runs single-end (no R2, so drop the R2-only forcetrimright2).
+        if nanopore:
+            command = (
+                BBTOOLS
+                + "bbduk.sh in1={f1} out1={f3} ref=./adapters.fa ktrim=r k=21 qtrim=r trimq=15 maq=15 minlen=30 entropy=0.3 threads=12 forcetrimleft=8"
+            )
+            command = command.format(f1=fn1, f3=base + ".clean.fq.gz")
+        else:
+            command = (
+                BBTOOLS
+                + "bbduk.sh in1={f1} in2={f2} out1={f3} out2={f4} ref=./adapters.fa ktrim=r k=21 qtrim=r trimq=15 maq=15 minlen=30 entropy=0.3 threads=12 forcetrimleft=8 forcetrimright2=8"
+            )
+            command = command.format(
+                f1=fn1,
+                f2=fn2,
+                f3=base + ".1.clean.fq.gz",
+                f4=base + ".2.clean.fq.gz",
+                f5=base,
+            )
 
         output = subprocess.check_output(
             command, shell=True, stderr=subprocess.STDOUT
         ).decode()
 
+        # BBduk reports read counts; for paired data these are 2x the pair count.
+        read_divisor = 1 if nanopore else 2
         for line in output.split("\n"):
             if line.startswith("Input:"):
-                reads = int(line.split(" reads")[0].split()[-1]) / 2
+                reads = int(line.split(" reads")[0].split()[-1]) / read_divisor
                 bases = int(line.split(" bases")[0].split()[-1])
             if line.startswith("QTrimmed"):
-                qtrimmed = int(line.split(" reads")[0].split()[-1]) / 2
+                qtrimmed = int(line.split(" reads")[0].split()[-1]) / read_divisor
             elif line.startswith("KTrimmed"):
-                ktrimmed = int(line.split(" reads")[0].split()[-1]) / 2
+                ktrimmed = int(line.split(" reads")[0].split()[-1]) / read_divisor
             elif line.startswith("Result:"):
-                result = int(line.split(" reads")[0].split()[-1]) / 2
+                result = int(line.split(" reads")[0].split()[-1]) / read_divisor
 
-        fn1 = base + ".1.clean.fq.gz"
-        fn2 = fn1.replace(".1.clean.fq.gz", ".2.clean.fq.gz")
+        if nanopore:
+            fn1 = base + ".clean.fq.gz"
+        else:
+            fn1 = base + ".1.clean.fq.gz"
+            fn2 = fn1.replace(".1.clean.fq.gz", ".2.clean.fq.gz")
 
-        ## Run BBmerge
-
-        if unmerged_reads:
+        ## Run BBmerge (Illumina) — or, for Nanopore, skip it: each read already
+        ## spans the full amplicon, so the cleaned reads ARE the "merged" reads.
+        if nanopore:
+            command = BBTOOLS + "reformat.sh in={f1} out={merged}.fasta ow=t"
+            command = command.format(f1=fn1, merged=base)
+            output = subprocess.check_output(
+                command, shell=True, stderr=subprocess.STDOUT
+            ).decode()
+            merged = 0
+            for line in output.split("\n"):
+                if line.startswith("Output:"):
+                    merged = int(line.split()[1])
+        elif unmerged_reads:
             command = (
                 BBTOOLS
                 + "bbmerge.sh in1={f1} in2={f2} out={merged}.fasta maxloose=t outu={merged}_u1.fasta outu2={merged}_u2.fasta"
@@ -194,17 +226,20 @@ def run(fastq_directory, mapping_file, library_info, output_directory, unmerged_
             command = (
                 BBTOOLS + "bbmerge.sh in1={f1} in2={f2} out={merged}.fasta maxloose=t"
             )
-        command = command.format(f1=fn1, f2=fn2, merged=base)
 
-        output = subprocess.check_output(
-            command, shell=True, stderr=subprocess.STDOUT
-        ).decode()
-        for line in output.split("\n"):
-            if line.startswith("Joined"):
-                merged = int(line.split()[1])
+        if not nanopore:
+            command = command.format(f1=fn1, f2=fn2, merged=base)
 
-        # Cat R1 and merged files
-        if unmerged_reads:
+            output = subprocess.check_output(
+                command, shell=True, stderr=subprocess.STDOUT
+            ).decode()
+            for line in output.split("\n"):
+                if line.startswith("Joined"):
+                    merged = int(line.split()[1])
+
+        # Cat R1 and merged files (Illumina unmerged mode only). Nanopore reads
+        # are full-length, so always search the single-read FASTA.
+        if unmerged_reads and not nanopore:
             with open(base + ".fasta", "r") as file1, open(
                 base + "_u1.fasta", "r"
             ) as file2:
@@ -215,6 +250,11 @@ def run(fastq_directory, mapping_file, library_info, output_directory, unmerged_
             command = "vsearch --usearch_global {base}_combined.fasta --id 0.95 --db {library}.fasta --blast6out {base}.blast"
         else:
             command = "vsearch --usearch_global {base}.fasta --id 0.95 --db {library}.fasta --blast6out {base}.blast"
+
+        # Nanopore reads are unstranded (~50% reverse-complement), so search both
+        # strands. Illumina merged reads are oriented, so the default (plus) holds.
+        if nanopore:
+            command += " --strand both"
 
         ## Run VSEARCH
         command = command.format(
@@ -377,6 +417,16 @@ if __name__ == "__main__":
         help="Also process unmerged R1 (useful with 2x75 bp or lower quality reads)",
     )
 
+    parser.add_argument(
+        "--nanopore",
+        action="store_true",
+        default=False,
+        required=False,
+        help="Single-end Nanopore amplicon mode: one FASTQ file per sample "
+        "(FileName*.fastq[.gz]), single-end BBduk, no read merging, and "
+        "VSEARCH searches both strands.",
+    )
+
     args = parser.parse_args()
 
     BBTOOLS = args.bbmap_folder.rstrip("/") + "/"
@@ -388,4 +438,5 @@ if __name__ == "__main__":
         args.library_info,
         args.output_folder.rstrip("/"),
         args.unmerged_reads,
+        args.nanopore,
     )
